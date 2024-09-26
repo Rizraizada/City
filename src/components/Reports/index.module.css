@@ -1,0 +1,128 @@
+.reportsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-size: cover; 
+  background-position: right;
+  background-repeat: no-repeat; 
+  margin: 20px 150px;
+  position: relative;
+}
+
+.ports {
+  background-image: url('/bg-section-01.png'), url('/banner-shape-04.png'), url('/banner-shape-05.png');
+  background-position: 0 0, 100% 0, 100% 0; /* First image stays, others at top-right */
+  background-size: cover, 60px 120px, 80px 50px; /* Adjust the size of the second and third images */
+  background-repeat: no-repeat;
+  animation: scrollBackground 10s linear infinite; /* Slower overall animation */
+  position: relative;
+}
+
+@keyframes scrollBackground {
+  0% {
+    background-position: 0 0, calc(100% - 0px) 0, calc(100% - 0px) 0; /* Initial positions */
+  }
+  20% {
+    background-position: 0 0, calc(100% - 10px) 20px, calc(100% - 10px) 0; /* Second image starts moving slowly */
+  }
+  40% {
+    background-position: 0 0, calc(100% - 20px) 100px, calc(100% - 20px) 0; /* Second image moves down at a slower pace */
+  }
+  60% {
+    background-position: 0 0, calc(100% - 30px) 200px, calc(100% - 30px) 0; /* Continue slow movement for second image */
+  }
+  80% {
+    background-position: 0 0, calc(100% - 50px) 250px, calc(100% - 50px) 0; /* Second image reaches the final position */
+  }
+  100% {
+    background-position: 0 0, calc(100% - 0px) 0, calc(100% - 0px) 0; /* Back to original */
+  }
+}
+
+
+
+
+
+.reportsContainer::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #0070f3;
+  z-index: 1;
+}
+
+.reportItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #ebf1f1;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.content {
+  padding: 50px;
+  text-align: left;
+  z-index: 1;
+}
+
+.title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.description {
+  font-size: 14px;
+  color: blue;
+}
+
+.iconContainer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  color: #0070f3;
+}
+
+.icons {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+}
+
+.reportItem::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background-color: #0070f3; /* Hover effect color */
+  transition: height 0.3s ease;
+  z-index: 0;
+}
+
+.reportItem:hover::before {
+  height: 100%;
+}
+
+.reportItem:hover .content,
+.reportItem:hover .iconContainer,
+.reportItem:hover .title,
+.reportItem:hover .icons,
+.reportItem:hover .description {
+  color: white; /* Text color on hover */
+}
+
+.reportItem:hover .icon {
+  color: white; /* Icon color on hover */
+}

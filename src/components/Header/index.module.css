@@ -1,0 +1,145 @@
+.header {
+  background-color: #fff;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.logoContainer {
+  text-align: center;
+}
+
+.logo {
+  width: 500px;
+}
+
+.navWrapper {
+  background-color: #000;
+  width: 100%;
+  padding: 18px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 7% 100%);
+
+}
+
+.navWrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-color: #000;
+  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+  z-index: -1;
+}
+
+.nav {
+  display: flex;
+  gap: 50px;
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  position: relative;
+}
+
+.navItem span {
+  margin-top: 5px;
+}
+
+/* Hover Effect: Blue underline appears on hover */
+.navItem:hover {
+  color: #0070f3;
+}
+
+.navItem:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 64px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #0070f3;
+}
+
+/* Active State: Keep the blue underline for the active page */
+.active {
+  color: #0070f3;
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  bottom: 64px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #0070f3;
+}
+
+.selectMode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Make it grab the same width as the nav */
+  background-color: #000;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.selectMode label {
+  margin-right: 10px;
+  color: #fff;
+}
+
+.selectMode select {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 5px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 0 20px;
+  }
+
+  .navWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .navItem {
+    font-size: 0.8rem;
+  }
+
+  .selectMode {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}

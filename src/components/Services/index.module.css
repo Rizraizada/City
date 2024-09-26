@@ -1,0 +1,85 @@
+.servicesSection {
+    background-color: #0E0E0E;
+    color: white;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    width: 100%;
+}
+
+
+.image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+
+.contentWrapper {
+    flex: 2;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.subtitle {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: blue;
+}
+
+.description {
+    margin-bottom: 40px;
+    font-size: 0.9rem;
+}
+
+.servicesWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: 50px;
+}
+.mia{
+    display: flex;
+    gap: 200px;
+}
+.don{
+    font-size: 3rem;
+    line-height: 3.5rem;
+}
+
+.serviceItem {
+    background-color: white;
+    color: black;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(33.333% - 30px);
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.serviceIcon {
+    margin-bottom: 10px;
+    color: blue;
+    transition: transform 0.3s;
+}
+
+.serviceItem:hover .serviceIcon {
+    transform: rotate(720deg) scale(1.1) skew(5deg); /* Multiple transformations */
+    transition: transform 0.3s; /* Keep the transition speed */
+}
+
+.serviceTitle {
+    font-size: 1.2rem;
+}
