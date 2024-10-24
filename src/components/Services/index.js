@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
+
 import { FaShieldAlt, FaFire, FaCog, FaCarAlt, FaShip, FaWater, FaGlobe } from 'react-icons/fa';
 import styles from './index.module.css';
 
@@ -14,19 +16,19 @@ const Services = () => {
       <div className={styles.container}>
         {/* Left side with image */}
         <div className={styles.imageWrapper}>
-          <img src="dot.png" alt="Services" className={styles.image} />
+          <img src="/dot.png" alt="Services" className={styles.image} />
         </div>
 
         {/* Right side with content */}
         <div className={styles.contentWrapper}>
           <p className={styles.subtitle}>Services</p>
           <div className={styles.mia}>
-            <h2 className={styles.don}>The fields on which <br /> we have given our <br /> services.</h2>
+            <h2 className={styles.don}>The fields on which we have given our services.</h2>
             <p className={styles.description}>
-              To provide consultancy for preparing all sorts of corporate law and any <br /> other services as the company 
-              may think fit and proper. Insurance policies <br /> provide protection to your wealth and based on the differences
-              in policies it <br /> also gives you the opportunity to save money as well.
-            </p> 
+              To provide consultancy for preparing all sorts of corporate law and any other services as the company
+              may think fit and proper. Insurance policies provide protection to your wealth and based on the differences
+              in policies it also gives you the opportunity to save money as well.
+            </p>
           </div>
 
           <div className={styles.servicesWrapper}>

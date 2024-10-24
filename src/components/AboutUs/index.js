@@ -53,7 +53,7 @@ const AboutUs = () => {
 
       {/* Move the image outside the main content */}
       <div className={styles.imageWrapper}>
-        <img src="lol.png" alt="Services" className={styles.image} />
+        <img src="/lol.png" alt="Services" className={styles.image} />
       </div>
 
       <h1 className={styles.subtitle}>You can depend on us<br />to get good services</h1>

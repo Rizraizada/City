@@ -1,0 +1,172 @@
+.award-presentation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.award-text {
+    width: 34%;
+    margin-left: 135px;
+}
+
+.award-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+.award-description {
+    color: #666;
+    line-height: 1.6;
+}
+
+.award-medal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.award-medal img {
+    height: 20rem;
+    object-fit: contain;
+}
+
+.award-carousel {
+    width: 45%;
+    position: relative;
+}
+
+.carousel-item {
+    position: relative;
+}
+
+.carousel-image {
+    width: 75%; /* Make it responsive */
+    border-radius: 0.25rem;
+    margin-top: 72px;
+}
+
+.carousel-text {
+    position: absolute;
+    bottom: 0;
+    left: 57px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.carousel-logo {
+    display: flex;
+    align-items: center;
+}
+
+.carousel-logo img {
+    height: 2rem;
+    margin-right: 0.5rem;
+}
+
+.carousel-award {
+    text-align: center;
+    font-weight: bold;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.carousel-control {
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 0.5rem;
+}
+
+.carousel-control svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #666;
+}
+
+/* Responsiveness */
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+    .award-text {
+        width: 45%;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .award-carousel {
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    .award-medal img {
+        height: 15rem;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+    .award-presentation {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .award-text, .award-carousel {
+        width: 100%;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .award-medal {
+        position: static;
+        transform: none;
+        margin: 2rem 0;
+    }
+
+    .award-medal img {
+        height: 12rem;
+    }
+
+    .carousel-image {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .award-title {
+        font-size: 1.8rem;
+    }
+
+    .award-medal img {
+        height: 10rem;
+    }
+
+    .award-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    .carousel-image {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}

@@ -6,14 +6,14 @@
 
 html, body {
   height: 100%;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #f8f9fa;
-  color: white;
+  background-color: white;
+  color: rgb(235, 229, 229);
 }
 
 main {

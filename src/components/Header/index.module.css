@@ -11,10 +11,9 @@
 .content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
   position: relative;
+  justify-content: center;
+
 }
 
 /* Logo */
@@ -27,7 +26,7 @@
   display: flex;
   align-items: center;
   background-color: #000; /* Default black background */
-  gap: 30px;
+  gap: 32px;
   padding: 6px 0;
   justify-content: center;
   position: relative;
@@ -55,6 +54,8 @@
 
 /* Nav items */
 .navItem {
+  text-decoration: none;
+  transition: color 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,7 +89,6 @@
 
 /* Active nav item */
 .navItem.active {
-  background-color: #0070f3; /* Blue background when active */
   color: white; 
 }
 
@@ -102,7 +102,7 @@
   z-index: 10;
   display: block;
   padding-top: 10px;
-  width: 230px;
+  width: 300px; /* Increased width */
 }
 
 /* Dropdown item */
@@ -111,24 +111,285 @@
   padding: 10px 20px;
   text-decoration: none;
   color: #000;
+  font-size: 1rem; /* Smaller text size */
 }
 
 .dropdownItem:hover {
   background-color: #f0f0f0;
 }
 
-/* Select mode: Apply only to specific items, not entire navbar */
-.selectMode .navItemContainer {
-  border: 1px solid #0070f3; /* Add a border to the individual item */
-}
-
-/* Branch and Contact Fix: Make sure they don't affect select mode */
-.navItemContainer:hover .navItem {
-  color: #0070f3; /* Ensure hover styles are applied to the item only */
-}
-
-/* Extra Select Mode Handling */
 .selectMode .navItem.active {
-  background-color: #0070f3; /* Blue when selected */
   color: white;
+}
+
+.navItem svg {
+  color: #0070f3;
+  transition: color 0.3s ease;
+}
+
+/* Header styles */
+.header {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+/* Content Wrapper */
+.content {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+/* Logo */
+.logo {
+  margin: 5px;
+}
+
+/* Nav styles */
+.nav {
+  display: flex;
+  align-items: center;
+  background-color: #000;
+  gap: 32px;
+  padding: 6px 0;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Pseudo-element to create skewed effect */
+.nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  transform-origin: bottom left;
+  transform: skewX(20deg);
+  z-index: -1;
+}
+
+/* Nav item container */
+.navItemContainer {
+  position: relative;
+}
+
+/* Nav items */
+.navItem {
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  gap: 5px;
+  padding: 10px 15px;
+  background-color: black;
+  color: white;
+  position: relative;
+}
+
+/* Hover effect for nav item */
+.navItem:hover {
+  color: #0070f3;
+}
+
+/* Underline effect on hover */
+.navItem:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #0070f3;
+}
+
+/* Active nav item */
+.navItem.active {
+  color: white;
+}
+
+/* Dropdown menu */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: block;
+  padding-top: 10px;
+  width: 300px;
+}
+
+/* Dropdown item */
+.dropdownItem {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+}
+
+.dropdownItem:hover {
+  background-color: #f0f0f0;
+}
+
+.selectMode .navItem.active {
+  color: white;
+}
+
+.navItem svg {
+  color: #0070f3;
+  transition: color 0.3s ease;
+}
+
+/* Menu toggle button - hidden by default */
+.menuToggle,
+.closeMenu {
+  display: none;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .content {
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+
+  .logo {
+    width: 200px;
+    height: auto;
+  }
+
+  .menuToggle,
+  .closeMenu {
+    display: block;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: #000;
+  }
+
+  .menuToggle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    bottom: 0;
+    width: 300px;
+    height: 100vh;
+    flex-direction: column;
+    background-color: white;
+    transition: transform 0.3s ease;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+  }
+
+  .nav::before {
+    display: none;
+  }
+
+  .nav.open {
+    left: 0;
+  }
+
+  .navItemContainer {
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .navItem {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 15px;
+    background-color: transparent;
+    color: #000;
+    gap: 10px;
+  }
+
+  .navItem span {
+    color: #000;
+    font-weight: 500;
+  }
+
+  .navItem:hover::after {
+    display: none;
+  }
+
+  .navItem svg {
+    color: #0070f3;
+    min-width: 20px;
+  }
+
+  .dropdown {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border-left: 2px solid #0070f3;
+    margin-left: 20px;
+    padding: 5px 0;
+  }
+
+  .dropdownItem {
+    padding: 10px 15px;
+    color: #000;
+    font-size: 0.9rem;
+  }
+
+  .dropdownToggle {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #000;
+  }
+
+  /* Close button styling */
+  .closeMenu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #f7f7f7;
+    z-index: 11;
+  }
+
+  /* Fix for nested logo in mobile menu */
+  .nav > div {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .nav > div .logo {
+    width: 70%;
+    height: auto;
+    margin-bottom: 10px;
+  }
 }

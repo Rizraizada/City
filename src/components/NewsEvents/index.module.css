@@ -1,0 +1,213 @@
+.container {
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  padding: 70px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #0066cc;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.title {
+  font-size: 47px;
+  color: #333333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.newsGrid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.featuredNews {
+  flex: 1;
+  min-width: 300px;
+}
+
+.featuredImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.featuredImage:hover {
+  transform: rotate(-2deg) translateX(5px) translateY(-5px);
+}
+
+.featuredTitle {
+  font-size: 24px;
+  color: #333333;
+  margin-top: 10px;
+}
+
+.featuredDescription {
+  font-size: 16px;
+  color: #666666;
+  margin-top: 10px;
+}
+
+.newsList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 300px;
+}
+
+.newsItem {
+  display: flex;
+  gap: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.newsImage {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.newsImage:hover {
+  transform: rotate(-2deg) translateX(5px) translateY(-5px);
+}
+
+.newsContent {
+  padding: 10px;
+  flex: 1;
+}
+
+.newsTitle {
+  font-size: 18px;
+  color: #333333;
+  margin-bottom: 5px;
+}
+
+.newsDescription {
+  font-size: 14px;
+  color: #666666;
+}
+
+.footer {
+  margin-top: 40px;
+}
+
+.footerTitle {
+  font-size: 35px;
+  color: #333333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.stockExchanges {
+  display: flex;
+  gap: 20px;
+}
+
+.exchangeLogo {
+  width: 113px;
+  height: 60px;
+}
+
+.productSelect {
+  width: 200px;
+}
+
+.select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .container {
+    padding: 50px;
+  }
+
+  .newsGrid {
+    flex-direction: column;
+  }
+
+  .newsItem {
+    flex-direction: row;
+  }
+
+  .featuredImage,
+  .newsImage {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+
+  .newsItem {
+    flex-direction: column;
+  }
+
+  .featuredImage,
+  .newsImage {
+    width: 100%;
+    height: 200px;
+  }
+
+  .footerContent {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footerTitle {
+    font-size: 28px;
+  }
+
+  .exchangeLogo {
+    width: 90px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 30px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .featuredDescription,
+  .newsDescription {
+    font-size: 13px;
+  }
+
+  .footerTitle {
+    font-size: 24px;
+  }
+}

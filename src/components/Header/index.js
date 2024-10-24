@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { FaHome, FaUmbrella, FaChartLine, FaBuilding, FaInfoCircle, FaEnvelope, FaBars, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import styles from './index.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { Home, Umbrella, TrendingUp, Building2, Info, Mail } from 'lucide-react';
-import styles from './index.module.css';
 
 const Header = () => {
   const router = useRouter();
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize(); // Set initial value
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const isActive = (href) => router.pathname === href;
 
@@ -18,7 +29,6 @@ const Header = () => {
       'Our Vision And Mission',
       'Board of Directors',
       'Management Team',
-      'Senior Executive',
       'Audit Committee',
       'NRC',
       'Investment Committee',
@@ -52,52 +62,90 @@ const Header = () => {
       'Unclaimed Dividend',
       'Dividend Distribution Compliance Report',
       'Corporate Governance Code',
-      'Buy/Sale Declaration',
+      'BuySale Declaration',
       'Investors Relations Department',
-      'Branch Info',
-      'Gallery',
+    ],
+    info: [ 
       'Claim Outstanding Status',
-      'Agent Information',
+      'Gallery',
       'KYC Profile',
     ],
-    info: ['FAQ', 'About Us', 'Customer Care'],
   };
+
+  const toggleSideMenu = () => setIsSideMenuOpen(!isSideMenuOpen);
+
+  const toggleDropdown = (label) => {
+    setActiveDropdown((prev) => (prev === label.toLowerCase() ? null : label.toLowerCase()));
+  };
+
+  const NavItem = ({ href, icon: Icon, label }) => {
+    const isDropdownActive = activeDropdown === label.toLowerCase();
+  
+    return (
+      <div
+        className={styles.navItemContainer}
+        onMouseEnter={() => !isMobile && setActiveDropdown(label.toLowerCase())} // Show dropdown on hover for desktop only
+        onMouseLeave={() => !isMobile && setActiveDropdown(null)} // Hide dropdown on mouse leave for desktop only
+      >
+        <Link href={href} className={`${styles.navItem} ${isActive(href) ? styles.active : ''}`}>
+          <Icon size={20} />
+          <span>
+            {label}
+            {label !== 'Branch' && label !== 'Contact' && ' +'}
+          </span>
+        </Link>
+  
+        {dropdownContent[label.toLowerCase()] && (
+          <>
+            {isMobile ? (
+              // Mobile view: show toggle button
+              <button className={styles.dropdownToggle} onClick={() => toggleDropdown(label)}>
+                {isDropdownActive ? <FaChevronUp size={16} /> : <FaChevronDown size={16} />}
+              </button>
+            ) : null}
+  
+            {isDropdownActive && (
+              // Show dropdown menu
+              <div className={styles.dropdown}>
+                {dropdownContent[label.toLowerCase()].map((item, index) => (
+                  <Link key={index} href={`/${label.toLowerCase()}/${item.toLowerCase().replace(/\s+/g, '-')}`} className={styles.dropdownItem}>
+                    {item}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    );
+  };
+  
+
 
   return (
     <header className={styles.header}>
       <div className={styles.content}>
         <Image src="/mlogo.png" width={500} height={70} className={styles.logo} alt="City Insurance Logo" />
-        <nav className={styles.nav}>
-          {['home', 'insurance', 'investors', 'info'].map((key) => (
-            <div
-              key={key}
-              className={styles.navItemContainer}
-              onMouseEnter={() => setActiveDropdown(key)}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <Link href={`/${key}`} className={`${styles.navItem} ${isActive(`/${key}`) ? styles.active : ''}`}>
-                {key === 'home' ? <Home size={20} /> : key === 'insurance' ? <Umbrella size={20} /> : key === 'investors' ? <TrendingUp size={20} /> : <Info size={20} />}
-                <span>{key.charAt(0).toUpperCase() + key.slice(1)} +</span>
-              </Link>
-              {activeDropdown === key && (
-                <div className={styles.dropdown}>
-                  {dropdownContent[key].map((item, index) => (
-                    <Link key={index} href={`/${key}/${item.toLowerCase().replace(/\s+/g, '-')}`} className={styles.dropdownItem}>
-                      {item}
-                    </Link>
-                  ))}
-                </div>
-              )}
+        {isMobile && (
+          <button className={styles.menuToggle} onClick={toggleSideMenu}>
+            {isSideMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
+        )}
+        <nav className={`${styles.nav} ${isSideMenuOpen ? styles.open : ''}`}>
+          {isMobile && (
+            <div>
+              <Image src="/mlogo.png" width={500} height={70} className={styles.logo} alt="City Insurance Logo" />
+              <button className={styles.closeMenu} onClick={toggleSideMenu}>
+                <FaTimes size={24} />
+              </button>
             </div>
-          ))}
-          <Link href="/branch" className={`${styles.navItem} ${isActive('/branch') ? styles.active : ''}`}>
-            <Building2 size={20} />
-            <span>Branch</span>
-          </Link>
-          <Link href="/contact" className={`${styles.navItem} ${isActive('/contact') ? styles.active : ''}`}>
-            <Mail size={20} />
-            <span>Contact</span>
-          </Link>
+          )}
+          <NavItem href="/" icon={FaHome} label="Home" />
+          <NavItem href="/" icon={FaUmbrella} label="Insurance" />
+          <NavItem href="/" icon={FaChartLine} label="Investors" />
+          <NavItem href="/" icon={FaInfoCircle} label="Info" />
+          <NavItem href="/branch" icon={FaBuilding} label="Branch" />
+          <NavItem href="/contact" icon={FaEnvelope} label="Contact" />
         </nav>
       </div>
     </header>

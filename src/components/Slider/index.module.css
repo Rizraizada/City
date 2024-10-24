@@ -1,46 +1,65 @@
+/* src/components/Slider/index.module.css */
 .slider {
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.sliderWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.sliderImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 768px) {
+  .slider {
+    max-width: 100%;
   }
-  
-  .sliderWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 100%;
-  }
-  
-  .sliderImage {
-    width: 78%;
-    height: auto;
-    object-fit: cover;
-  }
-  
+
   .prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1;
+    padding: 8px;
+    font-size: 12px;
   }
-  
-  .prev {
-    left: 169px;
+
+  .sliderImage {
+    width: 100%;
   }
-  
-  .next {
-    right: 169px;
+}
+
+@media (max-width: 480px) {
+  .prev, .next {
+    padding: 6px;
+    font-size: 10px;
   }
-  
-  .prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
+}
